@@ -1,0 +1,61 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877 ]
+[d frameptr 0 ]
+"10 D:\XC8\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 D:\XC8\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 D:\XC8\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"13 C:\Users\hance\OneDrive\Masaüstü\Micro\DC_Motor_Speed_Control.X\DC_Motor_Speed_Control.c
+[v _KESME KESME `II(v  1 e 1 0 ]
+"38
+[v _main main `(v  1 e 1 0 ]
+"341 D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877.h
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"888
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
+"1371
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1433
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1495
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1805
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"2283
+[v _CCP1M2 CCP1M2 `VEb  1 e 0 @186 ]
+"2286
+[v _CCP1M3 CCP1M3 `VEb  1 e 0 @187 ]
+"2367
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"2484
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"2487
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"2490
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"2496
+[v _RBIE RBIE `VEb  1 e 0 @91 ]
+"2499
+[v _RBIF RBIF `VEb  1 e 0 @88 ]
+"2670
+[v _T2CKPS0 T2CKPS0 `VEb  1 e 0 @144 ]
+"2673
+[v _T2CKPS1 T2CKPS1 `VEb  1 e 0 @145 ]
+"2700
+[v _TMR2ON TMR2ON `VEb  1 e 0 @146 ]
+"38 C:\Users\hance\OneDrive\Masaüstü\Micro\DC_Motor_Speed_Control.X\DC_Motor_Speed_Control.c
+[v _main main `(v  1 e 1 0 ]
+{
+"54
+} 0
+"13
+[v _KESME KESME `II(v  1 e 1 0 ]
+{
+"35
+} 0
