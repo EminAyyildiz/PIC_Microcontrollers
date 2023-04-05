@@ -1,0 +1,101 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"498 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 498: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"210
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 210: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+[v F212 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic.h
+[v __delay `JF212 ~T0 @X0 0 e ]
+[p i __delay ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"212
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 212: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"274
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 274: __asm("EEDATA equ 08h");
+[; <" EEDATA equ 08h ;# ">
+"281
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 281: __asm("EEADR equ 09h");
+[; <" EEADR equ 09h ;# ">
+"288
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 288: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"308
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 308: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"386
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 386: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"456
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 456: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"500
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 500: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"562
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 562: __asm("EECON1 equ 088h");
+[; <" EECON1 equ 088h ;# ">
+"606
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f84a.h: 606: __asm("EECON2 equ 089h");
+[; <" EECON2 equ 089h ;# ">
+"11 led_uygulamasi.c
+[; ;led_uygulamasi.c: 11:         sayi++;
+[p x FOSC = XT ]
+"12
+[; ;led_uygulamasi.c: 12:         PORTB=sayi;
+[p x WDTE = ON ]
+"13
+[; ;led_uygulamasi.c: 13:         _delay((unsigned long)((10)*(4000000/4000.0)));
+[p x PWRTE = OFF ]
+"14
+[; ;led_uygulamasi.c: 14: 
+[p x CP = OFF ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"19
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"21
+[e = _TRISB -> -> 0 `i `uc ]
+"22
+[e = _PORTB -> -> 0 `i `uc ]
+"23
+[v _sayi `i ~T0 @X0 1 a ]
+"25
+[e :U 25 ]
+{
+"27
+[e ++ _sayi -> 1 `i ]
+"28
+[e = _PORTB -> _sayi `uc ]
+"29
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"31
+}
+[e :U 24 ]
+[e $U 25  ]
+[e :U 26 ]
+"33
+[e :UE 23 ]
+}
