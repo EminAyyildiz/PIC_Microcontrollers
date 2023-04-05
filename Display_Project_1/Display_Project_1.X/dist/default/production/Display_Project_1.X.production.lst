@@ -1,0 +1,420 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Wed Apr 05 13:41:13 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	16F84A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,delta=2,noexec
+     5                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    11                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    12                           	dabs	1,0x4E,2
+    13     0000                     
+    14                           ; Version 2.40
+    15                           ; Generated 17/11/2021 GMT
+    16                           ; 
+    17                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution. Publication is not required when
+    31                           ;        this file is used in an embedded application.
+    32                           ; 
+    33                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    34                           ;        software without specific prior written permission.
+    35                           ; 
+    36                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    37                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    38                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    39                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    40                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    41                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    42                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    43                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    44                           ; 
+    45                           ; 
+    46                           ; Code-generator required, PIC16F84A Definitions
+    47                           ; 
+    48                           ; SFR Addresses
+    49     0000                     	;# 
+    50     0001                     	;# 
+    51     0002                     	;# 
+    52     0003                     	;# 
+    53     0004                     	;# 
+    54     0005                     	;# 
+    55     0006                     	;# 
+    56     0008                     	;# 
+    57     0009                     	;# 
+    58     000A                     	;# 
+    59     000B                     	;# 
+    60     0081                     	;# 
+    61     0085                     	;# 
+    62     0086                     	;# 
+    63     0088                     	;# 
+    64     0089                     	;# 
+    65     0000                     	;# 
+    66     0001                     	;# 
+    67     0002                     	;# 
+    68     0003                     	;# 
+    69     0004                     	;# 
+    70     0005                     	;# 
+    71     0006                     	;# 
+    72     0008                     	;# 
+    73     0009                     	;# 
+    74     000A                     	;# 
+    75     000B                     	;# 
+    76     0081                     	;# 
+    77     0085                     	;# 
+    78     0086                     	;# 
+    79     0088                     	;# 
+    80     0089                     	;# 
+    81                           
+    82                           	psect	idataBANK0
+    83     038A                     __pidataBANK0:
+    84                           
+    85                           ;initializer for _dizi
+    86     038A  343F               	retlw	63
+    87     038B  3400               	retlw	0
+    88     038C  3406               	retlw	6
+    89     038D  3400               	retlw	0
+    90     038E  345B               	retlw	91
+    91     038F  3400               	retlw	0
+    92     0390  344F               	retlw	79
+    93     0391  3400               	retlw	0
+    94     0392  3466               	retlw	102
+    95     0393  3400               	retlw	0
+    96     0394  346D               	retlw	109
+    97     0395  3400               	retlw	0
+    98     0396  347C               	retlw	124
+    99     0397  3400               	retlw	0
+   100     0398  3407               	retlw	7
+   101     0399  3400               	retlw	0
+   102     039A  347F               	retlw	127
+   103     039B  3400               	retlw	0
+   104     039C  346F               	retlw	111
+   105     039D  3400               	retlw	0
+   106                           
+   107                           	psect	nvBANK0
+   108     0023                     __pnvBANK0:
+   109     0023                     _i:
+   110     0023                     	ds	2
+   111     0005                     _PORTA	set	5
+   112     0006                     _PORTB	set	6
+   113     0085                     _TRISA	set	133
+   114     0086                     _TRISB	set	134
+   115                           
+   116                           	psect	cinit
+   117     03D6                     start_initialization:	
+   118                           ; #config settings
+   119                           
+   120     03D6                     __initialization:
+   121                           
+   122                           ; Initialize objects allocated to BANK0
+   123     03D6  238A               	fcall	__pidataBANK0	;fetch initializer
+   124     03D7  008C               	movwf	__pdataBANK0& (0+127)
+   125     03D8  238B               	fcall	__pidataBANK0+1	;fetch initializer
+   126     03D9  008D               	movwf	(__pdataBANK0+1)& (0+127)
+   127     03DA  238C               	fcall	__pidataBANK0+2	;fetch initializer
+   128     03DB  008E               	movwf	(__pdataBANK0+2)& (0+127)
+   129     03DC  238D               	fcall	__pidataBANK0+3	;fetch initializer
+   130     03DD  008F               	movwf	(__pdataBANK0+3)& (0+127)
+   131     03DE  238E               	fcall	__pidataBANK0+4	;fetch initializer
+   132     03DF  0090               	movwf	(__pdataBANK0+4)& (0+127)
+   133     03E0  238F               	fcall	__pidataBANK0+5	;fetch initializer
+   134     03E1  0091               	movwf	(__pdataBANK0+5)& (0+127)
+   135     03E2  2390               	fcall	__pidataBANK0+6	;fetch initializer
+   136     03E3  0092               	movwf	(__pdataBANK0+6)& (0+127)
+   137     03E4  2391               	fcall	__pidataBANK0+7	;fetch initializer
+   138     03E5  0093               	movwf	(__pdataBANK0+7)& (0+127)
+   139     03E6  2392               	fcall	__pidataBANK0+8	;fetch initializer
+   140     03E7  0094               	movwf	(__pdataBANK0+8)& (0+127)
+   141     03E8  2393               	fcall	__pidataBANK0+9	;fetch initializer
+   142     03E9  0095               	movwf	(__pdataBANK0+9)& (0+127)
+   143     03EA  2394               	fcall	__pidataBANK0+10	;fetch initializer
+   144     03EB  0096               	movwf	(__pdataBANK0+10)& (0+127)
+   145     03EC  2395               	fcall	__pidataBANK0+11	;fetch initializer
+   146     03ED  0097               	movwf	(__pdataBANK0+11)& (0+127)
+   147     03EE  2396               	fcall	__pidataBANK0+12	;fetch initializer
+   148     03EF  0098               	movwf	(__pdataBANK0+12)& (0+127)
+   149     03F0  2397               	fcall	__pidataBANK0+13	;fetch initializer
+   150     03F1  0099               	movwf	(__pdataBANK0+13)& (0+127)
+   151     03F2  2398               	fcall	__pidataBANK0+14	;fetch initializer
+   152     03F3  009A               	movwf	(__pdataBANK0+14)& (0+127)
+   153     03F4  2399               	fcall	__pidataBANK0+15	;fetch initializer
+   154     03F5  009B               	movwf	(__pdataBANK0+15)& (0+127)
+   155     03F6  239A               	fcall	__pidataBANK0+16	;fetch initializer
+   156     03F7  009C               	movwf	(__pdataBANK0+16)& (0+127)
+   157     03F8  239B               	fcall	__pidataBANK0+17	;fetch initializer
+   158     03F9  009D               	movwf	(__pdataBANK0+17)& (0+127)
+   159     03FA  239C               	fcall	__pidataBANK0+18	;fetch initializer
+   160     03FB  009E               	movwf	(__pdataBANK0+18)& (0+127)
+   161     03FC  239D               	fcall	__pidataBANK0+19	;fetch initializer
+   162     03FD  009F               	movwf	(__pdataBANK0+19)& (0+127)
+   163     03FE                     end_of_initialization:	
+   164                           ;End of C runtime variable initialization code
+   165                           
+   166     03FE                     __end_of__initialization:
+   167     03FE  0183               	clrf	3
+   168     03FF  2B9E               	ljmp	_main	;jump to C main() function
+   169                           
+   170                           	psect	dataBANK0
+   171     000C                     __pdataBANK0:
+   172     000C                     _dizi:
+   173     000C                     	ds	20
+   174                           
+   175                           	psect	cstackBANK0
+   176     0020                     __pcstackBANK0:
+   177     0020                     ?_main:
+   178     0020                     ??_main:	
+   179                           ; 1 bytes @ 0x0
+   180                           
+   181                           
+   182                           ; 1 bytes @ 0x0
+   183     0020                     	ds	3
+   184                           
+   185                           	psect	maintext
+   186     039E                     __pmaintext:	
+   187 ;;
+   188 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   189 ;;
+   190 ;; *************** function _main *****************
+   191 ;; Defined at:
+   192 ;;		line 15 in file "Display_Project_1.c"
+   193 ;; Parameters:    Size  Location     Type
+   194 ;;		None
+   195 ;; Auto vars:     Size  Location     Type
+   196 ;;		None
+   197 ;; Return value:  Size  Location     Type
+   198 ;;                  1    wreg      void 
+   199 ;; Registers used:
+   200 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1
+   201 ;; Tracked objects:
+   202 ;;		On entry : B00/0
+   203 ;;		On exit  : 0/0
+   204 ;;		Unchanged: 0/0
+   205 ;; Data sizes:     COMMON   BANK0
+   206 ;;      Params:         0       0
+   207 ;;      Locals:         0       0
+   208 ;;      Temps:          0       3
+   209 ;;      Totals:         0       3
+   210 ;;Total ram usage:        3 bytes
+   211 ;; This function calls:
+   212 ;;		Nothing
+   213 ;; This function is called by:
+   214 ;;		Startup code after reset
+   215 ;; This function uses a non-reentrant model
+   216 ;;
+   217                           
+   218     039E                     _main:	
+   219                           ;psect for function _main
+   220                           
+   221     039E                     l634:	
+   222                           ;incstack = 0
+   223                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1]
+   224                           
+   225                           
+   226                           ;Display_Project_1.c: 16: }
+   227     039E  1683               	bsf	3,5	;RP0=1, select bank1
+   228     039F  0186               	clrf	6	;volatile
+   229     03A0  1283               	bcf	3,5	;RP0=0, select bank0
+   230     03A1  0186               	clrf	6	;volatile
+   231     03A2  1683               	bsf	3,5	;RP0=1, select bank1
+   232     03A3  0185               	clrf	5	;volatile
+   233     03A4                     l636:
+   234     03A4  3001               	movlw	1
+   235     03A5  1283               	bcf	3,5	;RP0=0, select bank0
+   236     03A6  0085               	movwf	5	;volatile
+   237     03A7                     l638:
+   238     03A7  1283               	bcf	3,5	;RP0=0, select bank0
+   239     03A8  01A3               	clrf	_i
+   240     03A9  01A4               	clrf	_i+1
+   241     03AA                     l644:
+   242     03AA  1283               	bcf	3,5	;RP0=0, select bank0
+   243     03AB  0823               	movf	_i,w
+   244     03AC  00A0               	movwf	??_main
+   245     03AD  0720               	addwf	??_main,w
+   246     03AE  3E0C               	addlw	(low (_dizi| 0))& (0+255)
+   247     03AF  0084               	movwf	4
+   248     03B0  1383               	bcf	3,7	;select IRP bank0
+   249     03B1  0800               	movf	0,w
+   250     03B2  0086               	movwf	6	;volatile
+   251     03B3                     l646:
+   252     03B3  3003               	movlw	3
+   253     03B4  00A2               	movwf	??_main+2
+   254     03B5  308A               	movlw	138
+   255     03B6  00A1               	movwf	??_main+1
+   256     03B7  3055               	movlw	85
+   257     03B8  00A0               	movwf	??_main
+   258     03B9                     u37:
+   259     03B9  0BA0               	decfsz	??_main,f
+   260     03BA  2BB9               	goto	u37
+   261     03BB  0BA1               	decfsz	??_main+1,f
+   262     03BC  2BB9               	goto	u37
+   263     03BD  0BA2               	decfsz	??_main+2,f
+   264     03BE  2BB9               	goto	u37
+   265     03BF  2BC0               	nop2
+   266     03C0                     l648:
+   267     03C0  3001               	movlw	1
+   268     03C1  1283               	bcf	3,5	;RP0=0, select bank0
+   269     03C2  07A3               	addwf	_i,f
+   270     03C3  1803               	skipnc
+   271     03C4  0AA4               	incf	_i+1,f
+   272     03C5  3000               	movlw	0
+   273     03C6  07A4               	addwf	_i+1,f
+   274     03C7                     l650:
+   275     03C7  0824               	movf	_i+1,w
+   276     03C8  3A80               	xorlw	128
+   277     03C9  00CF               	movwf	btemp+1
+   278     03CA  3080               	movlw	128
+   279     03CB  024F               	subwf	btemp+1,w
+   280     03CC  1D03               	skipz
+   281     03CD  2BD0               	goto	u25
+   282     03CE  300A               	movlw	10
+   283     03CF  0223               	subwf	_i,w
+   284     03D0                     u25:
+   285     03D0  1C03               	skipc
+   286     03D1  2BD3               	goto	u21
+   287     03D2  2BD4               	goto	u20
+   288     03D3                     u21:
+   289     03D3  2BAA               	goto	l644
+   290     03D4                     u20:
+   291     03D4  2BA7               	goto	l638
+   292     03D5  2800               	ljmp	start
+   293     03D6                     __end_of_main:
+   294     004E                     btemp	set	78	;btemp
+   295     004E                     wtemp0	set	78
+   296                           
+   297                           	psect	idloc
+   298                           
+   299                           ;Config register IDLOC0 @ 0x2000
+   300                           ;	unspecified, using default values
+   301     2000                     	org	8192
+   302     2000  3FFF               	dw	16383
+   303                           
+   304                           ;Config register IDLOC1 @ 0x2001
+   305                           ;	unspecified, using default values
+   306     2001                     	org	8193
+   307     2001  3FFF               	dw	16383
+   308                           
+   309                           ;Config register IDLOC2 @ 0x2002
+   310                           ;	unspecified, using default values
+   311     2002                     	org	8194
+   312     2002  3FFF               	dw	16383
+   313                           
+   314                           ;Config register IDLOC3 @ 0x2003
+   315                           ;	unspecified, using default values
+   316     2003                     	org	8195
+   317     2003  3FFF               	dw	16383
+   318                           
+   319                           	psect	config
+   320                           
+   321                           ;Config register CONFIG @ 0x2007
+   322                           ;	Oscillator Selection bits
+   323                           ;	FOSC = EXTRC, RC oscillator
+   324                           ;	Watchdog Timer
+   325                           ;	WDTE = OFF, WDT disabled
+   326                           ;	Power-up Timer Enable bit
+   327                           ;	PWRTE = OFF, Power-up Timer is disabled
+   328                           ;	Code Protection bit
+   329                           ;	CP = OFF, Code protection disabled
+   330     2007                     	org	8199
+   331     2007  3FFB               	dw	16379
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        20
+    BSS         0
+    Persistent  2
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            66      3      25
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 3     3      0       0
+                                              0 BANK0      3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               42      3      19       3       37.9%
+BITBANK0            42      0       0       5        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITCOMMON            0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      19       6        0.0%
+ABS                  0      0      19       4        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA              40      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Wed Apr 05 13:41:13 2023
+
+                      _i 0023                       u20 03D4                       u21 03D3  
+                     u25 03D0                       u37 03B9                      l650 03C7  
+                    l634 039E                      l644 03AA                      l636 03A4  
+                    l646 03B3                      l638 03A7                      l648 03C0  
+                    fsr0 0004                      indf 0000                     _dizi 000C  
+                   _main 039E                     btemp 004E                     start 0000  
+                  ?_main 0020                    _PORTA 0005                    _PORTB 0006  
+                  _TRISA 0085                    _TRISB 0086                    status 0003  
+                  wtemp0 004E          __initialization 03D6             __end_of_main 03D6  
+                 ??_main 0020  __end_of__initialization 03FE             __pidataBANK0 038A  
+             __pmaintext 039E     end_of_initialization 03FE      start_initialization 03D6  
+            __pdataBANK0 000C                ___latbits 0000            __pcstackBANK0 0020  
+              __pnvBANK0 0023  
