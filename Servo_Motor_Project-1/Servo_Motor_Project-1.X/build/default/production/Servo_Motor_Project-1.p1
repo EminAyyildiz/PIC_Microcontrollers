@@ -1,0 +1,320 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[t ~ __interrupt . k ]
+[t T1 __interrupt ]
+"688 D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 688: extern volatile __bit RB4 __attribute__((address(0x34)));
+[v _RB4 `Vb ~T0 @X0 0 e@52 ]
+"691
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 691: extern volatile __bit RB5 __attribute__((address(0x35)));
+[v _RB5 `Vb ~T0 @X0 0 e@53 ]
+"703
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 703: extern volatile __bit RBIF __attribute__((address(0x58)));
+[v _RBIF `Vb ~T0 @X0 0 e@88 ]
+[p mainexit ]
+"634
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 634: extern volatile __bit GIE __attribute__((address(0x5F)));
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"700
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 700: extern volatile __bit RBIE __attribute__((address(0x5B)));
+[v _RBIE `Vb ~T0 @X0 0 e@91 ]
+"499
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 499: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"676
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 676: extern volatile __bit RB0 __attribute__((address(0x30)));
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
+[v F36 `(v ~T0 @X0 1 tf1`ul ]
+"12 D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\builtins.h
+[v __delay `JF36 ~T0 @X0 0 e ]
+[p i __delay ]
+"55 D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 55: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"62
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 62: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"69
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 69: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"76
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 76: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"162
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 162: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"169
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 169: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"213
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 213: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"275
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 275: __asm("EEDATA equ 08h");
+[; <" EEDATA equ 08h ;# ">
+"282
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 282: __asm("EEADR equ 09h");
+[; <" EEADR equ 09h ;# ">
+"289
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 289: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"309
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 309: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"387
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 387: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"457
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 457: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"501
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 501: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"563
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 563: __asm("EECON1 equ 088h");
+[; <" EECON1 equ 088h ;# ">
+"607
+[; ;D:/MPLABX/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f84.h: 607: __asm("EECON2 equ 089h");
+[; <" EECON2 equ 089h ;# ">
+"4 Servo_Motor_Project-1.c
+[; ;Servo_Motor_Project-1.c: 4:     if((RB4==1)&&(i<10)){
+[p x FOSC  =  XT        ]
+"5
+[; ;Servo_Motor_Project-1.c: 5:         i++;
+[p x WDTE  =  OFF         ]
+"6
+[; ;Servo_Motor_Project-1.c: 6:     }
+[p x PWRTE  =  OFF       ]
+"7
+[; ;Servo_Motor_Project-1.c: 7:     if((RB5==1)&&(i>0)){
+[p x CP  =  OFF          ]
+"10
+[; ;Servo_Motor_Project-1.c: 10:     RBIF=0;
+[v _i `i ~T0 @X0 1 e ]
+[v $root$_KESME `(v ~T0 @X0 0 e ]
+"12
+[; ;Servo_Motor_Project-1.c: 12: 
+[v _KESME `(v ~T1 @X0 1 ef ]
+{
+[e :U _KESME ]
+[f ]
+"13
+[; ;Servo_Motor_Project-1.c: 13: void main(void) {
+[e $ ! && == -> _RB4 `i -> 1 `i < _i -> 10 `i 24  ]
+{
+"14
+[; ;Servo_Motor_Project-1.c: 14: 
+[e ++ _i -> 1 `i ]
+"15
+[; ;Servo_Motor_Project-1.c: 15:     GIE=1;
+}
+[e :U 24 ]
+"16
+[; ;Servo_Motor_Project-1.c: 16:     RBIE=1;
+[e $ ! && == -> _RB5 `i -> 1 `i > _i -> 0 `i 25  ]
+{
+"17
+[; ;Servo_Motor_Project-1.c: 17:     TRISB=48;
+[e -- _i -> 1 `i ]
+"18
+[; ;Servo_Motor_Project-1.c: 18:     i=0;
+}
+[e :U 25 ]
+"19
+[; ;Servo_Motor_Project-1.c: 19:     while(1){
+[e = _RBIF -> -> 0 `i `b ]
+"20
+[; ;Servo_Motor_Project-1.c: 20:         RB0=1;
+[e :UE 23 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"22
+[; ;Servo_Motor_Project-1.c: 22:             case 0: _delay((unsigned long)((1)*(4000000/4000.0)));
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"24
+[; ;Servo_Motor_Project-1.c: 24:                     _delay((unsigned long)((19)*(4000000/4000.0)));
+[e = _GIE -> -> 1 `i `b ]
+"25
+[; ;Servo_Motor_Project-1.c: 25:                     break;
+[e = _RBIE -> -> 1 `i `b ]
+"26
+[; ;Servo_Motor_Project-1.c: 26:             case 1: _delay((unsigned long)((1.1)*(4000000/4000.0)));
+[e = _TRISB -> -> 48 `i `uc ]
+"27
+[; ;Servo_Motor_Project-1.c: 27:                     RB0=0;
+[e = _i -> 0 `i ]
+"28
+[; ;Servo_Motor_Project-1.c: 28:                     _delay((unsigned long)((18.9)*(4000000/4000.0)));
+[e :U 28 ]
+{
+"29
+[; ;Servo_Motor_Project-1.c: 29:                     break;
+[e = _RB0 -> -> 1 `i `b ]
+"30
+[; ;Servo_Motor_Project-1.c: 30:             case 2: _delay((unsigned long)((1.2)*(4000000/4000.0)));
+[e $U 31  ]
+{
+"31
+[; ;Servo_Motor_Project-1.c: 31:                     RB0=0;
+[e :U 32 ]
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"32
+[; ;Servo_Motor_Project-1.c: 32:                     _delay((unsigned long)((18.8)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"33
+[; ;Servo_Motor_Project-1.c: 33:                     break;
+[e ( __delay (1 -> * -> -> 19 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"34
+[; ;Servo_Motor_Project-1.c: 34:             case 3: _delay((unsigned long)((1.3)*(4000000/4000.0)));
+[e $U 30  ]
+"35
+[; ;Servo_Motor_Project-1.c: 35:                     RB0=0;
+[e :U 33 ]
+[e ( __delay (1 -> * .1.1 / -> -> 4000000 `l `d .4000.0 `ul ]
+"36
+[; ;Servo_Motor_Project-1.c: 36:                     _delay((unsigned long)((18.7)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"37
+[; ;Servo_Motor_Project-1.c: 37:                     break;
+[e ( __delay (1 -> * .18.9 / -> -> 4000000 `l `d .4000.0 `ul ]
+"38
+[; ;Servo_Motor_Project-1.c: 38:             case 4: _delay((unsigned long)((1.4)*(4000000/4000.0)));
+[e $U 30  ]
+"39
+[; ;Servo_Motor_Project-1.c: 39:                     RB0=0;
+[e :U 34 ]
+[e ( __delay (1 -> * .1.2 / -> -> 4000000 `l `d .4000.0 `ul ]
+"40
+[; ;Servo_Motor_Project-1.c: 40:                     _delay((unsigned long)((18.6)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"41
+[; ;Servo_Motor_Project-1.c: 41:                     break;
+[e ( __delay (1 -> * .18.8 / -> -> 4000000 `l `d .4000.0 `ul ]
+"42
+[; ;Servo_Motor_Project-1.c: 42:             case 5: _delay((unsigned long)((1.5)*(4000000/4000.0)));
+[e $U 30  ]
+"43
+[; ;Servo_Motor_Project-1.c: 43:                     RB0=0;
+[e :U 35 ]
+[e ( __delay (1 -> * .1.3 / -> -> 4000000 `l `d .4000.0 `ul ]
+"44
+[; ;Servo_Motor_Project-1.c: 44:                     _delay((unsigned long)((18.5)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"45
+[; ;Servo_Motor_Project-1.c: 45:                     break;
+[e ( __delay (1 -> * .18.7 / -> -> 4000000 `l `d .4000.0 `ul ]
+"46
+[; ;Servo_Motor_Project-1.c: 46:             case 6: _delay((unsigned long)((1.6)*(4000000/4000.0)));
+[e $U 30  ]
+"47
+[; ;Servo_Motor_Project-1.c: 47:                     RB0=0;
+[e :U 36 ]
+[e ( __delay (1 -> * .1.4 / -> -> 4000000 `l `d .4000.0 `ul ]
+"48
+[; ;Servo_Motor_Project-1.c: 48:                     _delay((unsigned long)((18.4)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"49
+[; ;Servo_Motor_Project-1.c: 49:                     break;
+[e ( __delay (1 -> * .18.6 / -> -> 4000000 `l `d .4000.0 `ul ]
+"50
+[; ;Servo_Motor_Project-1.c: 50:             case 7: _delay((unsigned long)((1.7)*(4000000/4000.0)));
+[e $U 30  ]
+"51
+[; ;Servo_Motor_Project-1.c: 51:                     RB0=0;
+[e :U 37 ]
+[e ( __delay (1 -> * .1.5 / -> -> 4000000 `l `d .4000.0 `ul ]
+"52
+[; ;Servo_Motor_Project-1.c: 52:                     _delay((unsigned long)((18.3)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"53
+[; ;Servo_Motor_Project-1.c: 53:                     break;
+[e ( __delay (1 -> * .18.5 / -> -> 4000000 `l `d .4000.0 `ul ]
+"54
+[; ;Servo_Motor_Project-1.c: 54:             case 8: _delay((unsigned long)((1.8)*(4000000/4000.0)));
+[e $U 30  ]
+"55
+[; ;Servo_Motor_Project-1.c: 55:                     RB0=0;
+[e :U 38 ]
+[e ( __delay (1 -> * .1.6 / -> -> 4000000 `l `d .4000.0 `ul ]
+"56
+[; ;Servo_Motor_Project-1.c: 56:                     _delay((unsigned long)((18.2)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"57
+[; ;Servo_Motor_Project-1.c: 57:                     break;
+[e ( __delay (1 -> * .18.4 / -> -> 4000000 `l `d .4000.0 `ul ]
+"58
+[; ;Servo_Motor_Project-1.c: 58:             case 9: _delay((unsigned long)((1.9)*(4000000/4000.0)));
+[e $U 30  ]
+"59
+[; ;Servo_Motor_Project-1.c: 59:                     RB0=0;
+[e :U 39 ]
+[e ( __delay (1 -> * .1.7 / -> -> 4000000 `l `d .4000.0 `ul ]
+"60
+[; ;Servo_Motor_Project-1.c: 60:                     _delay((unsigned long)((18.1)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"61
+[; ;Servo_Motor_Project-1.c: 61:                     break;
+[e ( __delay (1 -> * .18.3 / -> -> 4000000 `l `d .4000.0 `ul ]
+"62
+[; ;Servo_Motor_Project-1.c: 62:             case 10: _delay((unsigned long)((2)*(4000000/4000.0)));
+[e $U 30  ]
+"63
+[; ;Servo_Motor_Project-1.c: 63:                     RB0=0;
+[e :U 40 ]
+[e ( __delay (1 -> * .1.8 / -> -> 4000000 `l `d .4000.0 `ul ]
+"64
+[; ;Servo_Motor_Project-1.c: 64:                     _delay((unsigned long)((18)*(4000000/4000.0)));
+[e = _RB0 -> -> 0 `i `b ]
+"65
+[; ;Servo_Motor_Project-1.c: 65:                     break;
+[e ( __delay (1 -> * .18.2 / -> -> 4000000 `l `d .4000.0 `ul ]
+"66
+[; ;Servo_Motor_Project-1.c: 66:         }
+[e $U 30  ]
+"67
+[; ;Servo_Motor_Project-1.c: 67:     }
+[e :U 41 ]
+[e ( __delay (1 -> * .1.9 / -> -> 4000000 `l `d .4000.0 `ul ]
+"68
+[; ;Servo_Motor_Project-1.c: 68: }
+[e = _RB0 -> -> 0 `i `b ]
+"69
+[e ( __delay (1 -> * .18.1 / -> -> 4000000 `l `d .4000.0 `ul ]
+"70
+[e $U 30  ]
+"71
+[e :U 42 ]
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"72
+[e = _RB0 -> -> 0 `i `b ]
+"73
+[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"74
+[e $U 30  ]
+"75
+}
+[e $U 30  ]
+[e :U 31 ]
+[e [\ _i , $ -> 0 `i 32
+ , $ -> 1 `i 33
+ , $ -> 2 `i 34
+ , $ -> 3 `i 35
+ , $ -> 4 `i 36
+ , $ -> 5 `i 37
+ , $ -> 6 `i 38
+ , $ -> 7 `i 39
+ , $ -> 8 `i 40
+ , $ -> 9 `i 41
+ , $ -> 10 `i 42
+ 30 ]
+[e :U 30 ]
+"76
+}
+[e :U 27 ]
+[e $U 28  ]
+[e :U 29 ]
+"77
+[e :UE 26 ]
+}

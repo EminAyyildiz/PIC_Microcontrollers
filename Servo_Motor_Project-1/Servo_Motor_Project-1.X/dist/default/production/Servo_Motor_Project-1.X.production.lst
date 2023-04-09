@@ -1,0 +1,899 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Mon Apr 10 00:25:55 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	16F84
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	intentry,global,class=CODE,delta=2
+    10                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    11                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    12                           	dabs	1,0x4E,2
+    13     0000                     
+    14                           ; Version 2.40
+    15                           ; Generated 17/11/2021 GMT
+    16                           ; 
+    17                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution. Publication is not required when
+    31                           ;        this file is used in an embedded application.
+    32                           ; 
+    33                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    34                           ;        software without specific prior written permission.
+    35                           ; 
+    36                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    37                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    38                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    39                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    40                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    41                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    42                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    43                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    44                           ; 
+    45                           ; 
+    46                           ; Code-generator required, PIC16F84 Definitions
+    47                           ; 
+    48                           ; SFR Addresses
+    49     0000                     	;# 
+    50     0001                     	;# 
+    51     0002                     	;# 
+    52     0003                     	;# 
+    53     0004                     	;# 
+    54     0005                     	;# 
+    55     0006                     	;# 
+    56     0008                     	;# 
+    57     0009                     	;# 
+    58     000A                     	;# 
+    59     000B                     	;# 
+    60     0081                     	;# 
+    61     0085                     	;# 
+    62     0086                     	;# 
+    63     0088                     	;# 
+    64     0089                     	;# 
+    65     0000                     	;# 
+    66     0001                     	;# 
+    67     0002                     	;# 
+    68     0003                     	;# 
+    69     0004                     	;# 
+    70     0005                     	;# 
+    71     0006                     	;# 
+    72     0008                     	;# 
+    73     0009                     	;# 
+    74     000A                     	;# 
+    75     000B                     	;# 
+    76     0081                     	;# 
+    77     0085                     	;# 
+    78     0086                     	;# 
+    79     0088                     	;# 
+    80     0089                     	;# 
+    81     0030                     _RB0	set	48
+    82     005B                     _RBIE	set	91
+    83     005F                     _GIE	set	95
+    84     0058                     _RBIF	set	88
+    85     0035                     _RB5	set	53
+    86     0034                     _RB4	set	52
+    87     0086                     _TRISB	set	134
+    88                           
+    89                           	psect	cinit
+    90     000E                     start_initialization:	
+    91                           ; #config settings
+    92                           
+    93     000E                     __initialization:
+    94                           
+    95                           ; Clear objects allocated to BANK0
+    96     000E  1283               	bcf	3,5	;RP0=0, select bank0
+    97     000F  0191               	clrf	__pbssBANK0& (0+127)
+    98     0010  0192               	clrf	(__pbssBANK0+1)& (0+127)
+    99     0011                     end_of_initialization:	
+   100                           ;End of C runtime variable initialization code
+   101                           
+   102     0011                     __end_of__initialization:
+   103     0011  0183               	clrf	3
+   104     0012  2813               	ljmp	_main	;jump to C main() function
+   105                           
+   106                           	psect	bssBANK0
+   107     0011                     __pbssBANK0:
+   108     0011                     _i:
+   109     0011                     	ds	2
+   110                           
+   111                           	psect	cstackBANK0
+   112     000C                     __pcstackBANK0:
+   113     000C                     ?_KESME:
+   114     000C                     ??_KESME:	
+   115                           ; 1 bytes @ 0x0
+   116                           
+   117     000C                     ?_main:	
+   118                           ; 1 bytes @ 0x0
+   119                           
+   120                           
+   121                           ; 1 bytes @ 0x0
+   122     000C                     	ds	3
+   123     000F                     ??_main:
+   124                           
+   125                           ; 1 bytes @ 0x3
+   126     000F                     	ds	2
+   127                           
+   128                           	psect	maintext
+   129     0013                     __pmaintext:	
+   130 ;;
+   131 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   132 ;;
+   133 ;; *************** function _main *****************
+   134 ;; Defined at:
+   135 ;;		line 22 in file "Servo_Motor_Project-1.c"
+   136 ;; Parameters:    Size  Location     Type
+   137 ;;		None
+   138 ;; Auto vars:     Size  Location     Type
+   139 ;;		None
+   140 ;; Return value:  Size  Location     Type
+   141 ;;                  1    wreg      void 
+   142 ;; Registers used:
+   143 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   144 ;; Tracked objects:
+   145 ;;		On entry : B00/0
+   146 ;;		On exit  : 0/0
+   147 ;;		Unchanged: 0/0
+   148 ;; Data sizes:     COMMON   BANK0
+   149 ;;      Params:         0       0
+   150 ;;      Locals:         0       0
+   151 ;;      Temps:          0       2
+   152 ;;      Totals:         0       2
+   153 ;;Total ram usage:        2 bytes
+   154 ;; Hardware stack levels required when called: 1
+   155 ;; This function calls:
+   156 ;;		Nothing
+   157 ;; This function is called by:
+   158 ;;		Startup code after reset
+   159 ;; This function uses a non-reentrant model
+   160 ;;
+   161                           
+   162     0013                     _main:	
+   163                           ;psect for function _main
+   164                           
+   165     0013                     l758:	
+   166                           ;incstack = 0
+   167                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0]
+   168                           
+   169                           
+   170                           ;Servo_Motor_Project-1.c: 24:                     _delay((unsigned long)((19)*(4000000/4
+      +                          000.0)));
+   171     0013  178B               	bsf	11,7	;volatile
+   172                           
+   173                           ;Servo_Motor_Project-1.c: 25:                     break;
+   174     0014  158B               	bsf	11,3	;volatile
+   175     0015                     l760:
+   176                           
+   177                           ;Servo_Motor_Project-1.c: 26:             case 1: _delay((unsigned long)((1.1)*(4000000/
+      +                          4000.0)));
+   178     0015  3030               	movlw	48
+   179     0016  1683               	bsf	3,5	;RP0=1, select bank1
+   180     0017  0086               	movwf	6	;volatile
+   181     0018                     l762:
+   182                           
+   183                           ;Servo_Motor_Project-1.c: 27:                     RB0=0;
+   184     0018  1283               	bcf	3,5	;RP0=0, select bank0
+   185     0019  0191               	clrf	_i
+   186     001A  0192               	clrf	_i+1
+   187     001B                     l764:
+   188                           
+   189                           ;Servo_Motor_Project-1.c: 29:                     break;
+   190     001B  1283               	bcf	3,5	;RP0=0, select bank0
+   191     001C  1406               	bsf	6,0	;volatile
+   192                           
+   193                           ;Servo_Motor_Project-1.c: 30:             case 2: _delay((unsigned long)((1.2)*(4000000/
+      +                          4000.0)));
+   194     001D  28F6               	goto	l812
+   195     001E                     l766:
+   196     001E  30C7               	movlw	199
+   197     001F  008F               	movwf	??_main
+   198     0020                     u97:
+   199     0020  2821               	nop2
+   200     0021  0B8F               	decfsz	??_main,f
+   201     0022  2820               	goto	u97
+   202     0023  2824               	nop2
+   203     0024  2825               	nop2
+   204     0025                     l768:
+   205                           
+   206                           ;Servo_Motor_Project-1.c: 32:                     _delay((unsigned long)((18.8)*(4000000
+      +                          /4000.0)));
+   207     0025  1283               	bcf	3,5	;RP0=0, select bank0
+   208     0026  1006               	bcf	6,0	;volatile
+   209                           
+   210                           ;Servo_Motor_Project-1.c: 33:                     break;
+   211     0027  3019               	movlw	25
+   212     0028  0090               	movwf	??_main+1
+   213     0029  30AB               	movlw	171
+   214     002A  008F               	movwf	??_main
+   215     002B                     u107:
+   216     002B  0B8F               	decfsz	??_main,f
+   217     002C  282B               	goto	u107
+   218     002D  0B90               	decfsz	??_main+1,f
+   219     002E  282B               	goto	u107
+   220     002F  2830               	nop2
+   221                           
+   222                           ;Servo_Motor_Project-1.c: 34:             case 3: _delay((unsigned long)((1.3)*(4000000/
+      +                          4000.0)));
+   223     0030  281B               	goto	l764
+   224     0031                     l770:
+   225     0031  30DB               	movlw	219
+   226     0032  008F               	movwf	??_main
+   227     0033                     u117:
+   228     0033  2834               	nop2
+   229     0034  0B8F               	decfsz	??_main,f
+   230     0035  2833               	goto	u117
+   231     0036  2837               	nop2
+   232     0037  2838               	nop2
+   233     0038                     l772:
+   234                           
+   235                           ;Servo_Motor_Project-1.c: 36:                     _delay((unsigned long)((18.7)*(4000000
+      +                          /4000.0)));
+   236     0038  1283               	bcf	3,5	;RP0=0, select bank0
+   237     0039  1006               	bcf	6,0	;volatile
+   238                           
+   239                           ;Servo_Motor_Project-1.c: 37:                     break;
+   240     003A  3019               	movlw	25
+   241     003B  0090               	movwf	??_main+1
+   242     003C  308A               	movlw	138
+   243     003D  008F               	movwf	??_main
+   244     003E                     u127:
+   245     003E  0B8F               	decfsz	??_main,f
+   246     003F  283E               	goto	u127
+   247     0040  0B90               	decfsz	??_main+1,f
+   248     0041  283E               	goto	u127
+   249     0042  0000               	nop
+   250                           
+   251                           ;Servo_Motor_Project-1.c: 38:             case 4: _delay((unsigned long)((1.4)*(4000000/
+      +                          4000.0)));
+   252     0043  281B               	goto	l764
+   253     0044                     l774:
+   254     0044  30EF               	movlw	239
+   255     0045  008F               	movwf	??_main
+   256     0046                     u137:
+   257     0046  2847               	nop2
+   258     0047  0B8F               	decfsz	??_main,f
+   259     0048  2846               	goto	u137
+   260     0049  284A               	nop2
+   261     004A  284B               	nop2
+   262     004B                     l776:
+   263                           
+   264                           ;Servo_Motor_Project-1.c: 40:                     _delay((unsigned long)((18.6)*(4000000
+      +                          /4000.0)));
+   265     004B  1283               	bcf	3,5	;RP0=0, select bank0
+   266     004C  1006               	bcf	6,0	;volatile
+   267                           
+   268                           ;Servo_Motor_Project-1.c: 41:                     break;
+   269     004D  3019               	movlw	25
+   270     004E  0090               	movwf	??_main+1
+   271     004F  3069               	movlw	105
+   272     0050  008F               	movwf	??_main
+   273     0051                     u147:
+   274     0051  0B8F               	decfsz	??_main,f
+   275     0052  2851               	goto	u147
+   276     0053  0B90               	decfsz	??_main+1,f
+   277     0054  2851               	goto	u147
+   278                           
+   279                           ;Servo_Motor_Project-1.c: 42:             case 5: _delay((unsigned long)((1.5)*(4000000/
+      +                          4000.0)));
+   280     0055  281B               	goto	l764
+   281     0056                     l778:
+   282     0056  30B9               	movlw	185
+   283     0057  008F               	movwf	??_main
+   284     0058                     u157:
+   285     0058  2859               	nop2
+   286     0059  285A               	nop2
+   287     005A  0B8F               	decfsz	??_main,f
+   288     005B  2858               	goto	u157
+   289     005C  285D               	nop2
+   290     005D  285E               	nop2
+   291     005E                     l780:
+   292                           
+   293                           ;Servo_Motor_Project-1.c: 44:                     _delay((unsigned long)((18.5)*(4000000
+      +                          /4000.0)));
+   294     005E  1283               	bcf	3,5	;RP0=0, select bank0
+   295     005F  1006               	bcf	6,0	;volatile
+   296                           
+   297                           ;Servo_Motor_Project-1.c: 45:                     break;
+   298     0060  3019               	movlw	25
+   299     0061  0090               	movwf	??_main+1
+   300     0062  3047               	movlw	71
+   301     0063  008F               	movwf	??_main
+   302     0064                     u167:
+   303     0064  0B8F               	decfsz	??_main,f
+   304     0065  2864               	goto	u167
+   305     0066  0B90               	decfsz	??_main+1,f
+   306     0067  2864               	goto	u167
+   307     0068  2869               	nop2
+   308                           
+   309                           ;Servo_Motor_Project-1.c: 46:             case 6: _delay((unsigned long)((1.6)*(4000000/
+      +                          4000.0)));
+   310     0069  281B               	goto	l764
+   311     006A                     l782:
+   312     006A  30C7               	movlw	199
+   313     006B  008F               	movwf	??_main
+   314     006C                     u177:
+   315     006C  286D               	nop2
+   316     006D  286E               	nop2
+   317     006E  0B8F               	decfsz	??_main,f
+   318     006F  286C               	goto	u177
+   319     0070  2871               	nop2
+   320     0071  2872               	nop2
+   321     0072  2873               	nop2
+   322     0073                     l784:
+   323                           
+   324                           ;Servo_Motor_Project-1.c: 48:                     _delay((unsigned long)((18.4)*(4000000
+      +                          /4000.0)));
+   325     0073  1283               	bcf	3,5	;RP0=0, select bank0
+   326     0074  1006               	bcf	6,0	;volatile
+   327                           
+   328                           ;Servo_Motor_Project-1.c: 49:                     break;
+   329     0075  3019               	movlw	25
+   330     0076  0090               	movwf	??_main+1
+   331     0077  3026               	movlw	38
+   332     0078  008F               	movwf	??_main
+   333     0079                     u187:
+   334     0079  0B8F               	decfsz	??_main,f
+   335     007A  2879               	goto	u187
+   336     007B  0B90               	decfsz	??_main+1,f
+   337     007C  2879               	goto	u187
+   338     007D  0000               	nop
+   339                           
+   340                           ;Servo_Motor_Project-1.c: 50:             case 7: _delay((unsigned long)((1.7)*(4000000/
+      +                          4000.0)));
+   341     007E  281B               	goto	l764
+   342     007F                     l786:
+   343     007F  30D6               	movlw	214
+   344     0080  008F               	movwf	??_main
+   345     0081                     u197:
+   346     0081  2882               	nop2
+   347     0082  2883               	nop2
+   348     0083  0B8F               	decfsz	??_main,f
+   349     0084  2881               	goto	u197
+   350     0085  0000               	nop
+   351     0086                     l788:
+   352                           
+   353                           ;Servo_Motor_Project-1.c: 52:                     _delay((unsigned long)((18.3)*(4000000
+      +                          /4000.0)));
+   354     0086  1283               	bcf	3,5	;RP0=0, select bank0
+   355     0087  1006               	bcf	6,0	;volatile
+   356                           
+   357                           ;Servo_Motor_Project-1.c: 53:                     break;
+   358     0088  3019               	movlw	25
+   359     0089  0090               	movwf	??_main+1
+   360     008A  3005               	movlw	5
+   361     008B  008F               	movwf	??_main
+   362     008C                     u207:
+   363     008C  0B8F               	decfsz	??_main,f
+   364     008D  288C               	goto	u207
+   365     008E  0B90               	decfsz	??_main+1,f
+   366     008F  288C               	goto	u207
+   367                           
+   368                           ;Servo_Motor_Project-1.c: 54:             case 8: _delay((unsigned long)((1.8)*(4000000/
+      +                          4000.0)));
+   369     0090  281B               	goto	l764
+   370     0091                     l790:
+   371     0091  30E4               	movlw	228
+   372     0092  008F               	movwf	??_main
+   373     0093                     u217:
+   374     0093  2894               	nop2
+   375     0094  2895               	nop2
+   376     0095  0B8F               	decfsz	??_main,f
+   377     0096  2893               	goto	u217
+   378     0097  2898               	nop2
+   379     0098  0000               	nop
+   380     0099                     l792:
+   381                           
+   382                           ;Servo_Motor_Project-1.c: 56:                     _delay((unsigned long)((18.2)*(4000000
+      +                          /4000.0)));
+   383     0099  1283               	bcf	3,5	;RP0=0, select bank0
+   384     009A  1006               	bcf	6,0	;volatile
+   385                           
+   386                           ;Servo_Motor_Project-1.c: 57:                     break;
+   387     009B  3018               	movlw	24
+   388     009C  0090               	movwf	??_main+1
+   389     009D  30E4               	movlw	228
+   390     009E  008F               	movwf	??_main
+   391     009F                     u227:
+   392     009F  0B8F               	decfsz	??_main,f
+   393     00A0  289F               	goto	u227
+   394     00A1  0B90               	decfsz	??_main+1,f
+   395     00A2  289F               	goto	u227
+   396     00A3  0000               	nop
+   397                           
+   398                           ;Servo_Motor_Project-1.c: 58:             case 9: _delay((unsigned long)((1.9)*(4000000/
+      +                          4000.0)));
+   399     00A4  281B               	goto	l764
+   400     00A5                     l794:
+   401     00A5  30F2               	movlw	242
+   402     00A6  008F               	movwf	??_main
+   403     00A7                     u237:
+   404     00A7  28A8               	nop2
+   405     00A8  28A9               	nop2
+   406     00A9  0B8F               	decfsz	??_main,f
+   407     00AA  28A7               	goto	u237
+   408     00AB  28AC               	nop2
+   409     00AC  28AD               	nop2
+   410     00AD  0000               	nop
+   411     00AE                     l796:
+   412                           
+   413                           ;Servo_Motor_Project-1.c: 60:                     _delay((unsigned long)((18.1)*(4000000
+      +                          /4000.0)));
+   414     00AE  1283               	bcf	3,5	;RP0=0, select bank0
+   415     00AF  1006               	bcf	6,0	;volatile
+   416                           
+   417                           ;Servo_Motor_Project-1.c: 61:                     break;
+   418     00B0  3018               	movlw	24
+   419     00B1  0090               	movwf	??_main+1
+   420     00B2  30C3               	movlw	195
+   421     00B3  008F               	movwf	??_main
+   422     00B4                     u247:
+   423     00B4  0B8F               	decfsz	??_main,f
+   424     00B5  28B4               	goto	u247
+   425     00B6  0B90               	decfsz	??_main+1,f
+   426     00B7  28B4               	goto	u247
+   427                           
+   428                           ;Servo_Motor_Project-1.c: 62:             case 10: _delay((unsigned long)((2)*(4000000/4
+      +                          000.0)));
+   429     00B8  281B               	goto	l764
+   430     00B9                     l798:
+   431     00B9  3003               	movlw	3
+   432     00BA  0090               	movwf	??_main+1
+   433     00BB  3055               	movlw	85
+   434     00BC  008F               	movwf	??_main
+   435     00BD                     u257:
+   436     00BD  0B8F               	decfsz	??_main,f
+   437     00BE  28BD               	goto	u257
+   438     00BF  0B90               	decfsz	??_main+1,f
+   439     00C0  28BD               	goto	u257
+   440     00C1                     l800:
+   441                           
+   442                           ;Servo_Motor_Project-1.c: 64:                     _delay((unsigned long)((18)*(4000000/4
+      +                          000.0)));
+   443     00C1  1283               	bcf	3,5	;RP0=0, select bank0
+   444     00C2  1006               	bcf	6,0	;volatile
+   445                           
+   446                           ;Servo_Motor_Project-1.c: 65:                     break;
+   447     00C3  3018               	movlw	24
+   448     00C4  0090               	movwf	??_main+1
+   449     00C5  30A1               	movlw	161
+   450     00C6  008F               	movwf	??_main
+   451     00C7                     u267:
+   452     00C7  0B8F               	decfsz	??_main,f
+   453     00C8  28C7               	goto	u267
+   454     00C9  0B90               	decfsz	??_main+1,f
+   455     00CA  28C7               	goto	u267
+   456     00CB  28CC               	nop2
+   457                           
+   458                           ;Servo_Motor_Project-1.c: 66:         }
+   459     00CC  281B               	goto	l764
+   460     00CD                     l802:
+   461     00CD  3003               	movlw	3
+   462     00CE  0090               	movwf	??_main+1
+   463     00CF  3076               	movlw	118
+   464     00D0  008F               	movwf	??_main
+   465     00D1                     u277:
+   466     00D1  0B8F               	decfsz	??_main,f
+   467     00D2  28D1               	goto	u277
+   468     00D3  0B90               	decfsz	??_main+1,f
+   469     00D4  28D1               	goto	u277
+   470     00D5  0000               	nop
+   471     00D6                     l804:
+   472                           
+   473                           ;Servo_Motor_Project-1.c: 68: }
+   474     00D6  1283               	bcf	3,5	;RP0=0, select bank0
+   475     00D7  1006               	bcf	6,0	;volatile
+   476     00D8  3018               	movlw	24
+   477     00D9  0090               	movwf	??_main+1
+   478     00DA  3080               	movlw	128
+   479     00DB  008F               	movwf	??_main
+   480     00DC                     u287:
+   481     00DC  0B8F               	decfsz	??_main,f
+   482     00DD  28DC               	goto	u287
+   483     00DE  0B90               	decfsz	??_main+1,f
+   484     00DF  28DC               	goto	u287
+   485     00E0  0000               	nop
+   486     00E1  281B               	goto	l764
+   487     00E2                     l806:
+   488     00E2  3003               	movlw	3
+   489     00E3  0090               	movwf	??_main+1
+   490     00E4  3097               	movlw	151
+   491     00E5  008F               	movwf	??_main
+   492     00E6                     u297:
+   493     00E6  0B8F               	decfsz	??_main,f
+   494     00E7  28E6               	goto	u297
+   495     00E8  0B90               	decfsz	??_main+1,f
+   496     00E9  28E6               	goto	u297
+   497     00EA  28EB               	nop2
+   498     00EB                     l808:
+   499     00EB  1283               	bcf	3,5	;RP0=0, select bank0
+   500     00EC  1006               	bcf	6,0	;volatile
+   501     00ED  3018               	movlw	24
+   502     00EE  0090               	movwf	??_main+1
+   503     00EF  305F               	movlw	95
+   504     00F0  008F               	movwf	??_main
+   505     00F1                     u307:
+   506     00F1  0B8F               	decfsz	??_main,f
+   507     00F2  28F1               	goto	u307
+   508     00F3  0B90               	decfsz	??_main+1,f
+   509     00F4  28F1               	goto	u307
+   510     00F5  281B               	goto	l764
+   511     00F6                     l812:
+   512                           
+   513                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   514                           ; Switch size 1, requested type "simple"
+   515                           ; Number of cases is 1, Range of values is 0 to 0
+   516                           ; switch strategies available:
+   517                           ; Name         Instructions Cycles
+   518                           ; simple_byte            4     3 (average)
+   519                           ; direct_byte            7     6 (fixed)
+   520                           ; jumptable            260     6 (fixed)
+   521                           ;	Chosen strategy is simple_byte
+   522     00F6  0812               	movf	_i+1,w
+   523     00F7  3A00               	xorlw	0	; case 0
+   524     00F8  1903               	skipnz
+   525     00F9  28FB               	goto	l850
+   526     00FA  281B               	goto	l764
+   527     00FB                     l850:
+   528                           
+   529                           ; Switch size 1, requested type "simple"
+   530                           ; Number of cases is 11, Range of values is 0 to 10
+   531                           ; switch strategies available:
+   532                           ; Name         Instructions Cycles
+   533                           ; direct_byte           17     6 (fixed)
+   534                           ; simple_byte           34    18 (average)
+   535                           ; jumptable            260     6 (fixed)
+   536                           ;	Chosen strategy is simple_byte
+   537     00FB  0811               	movf	_i,w
+   538     00FC  3A00               	xorlw	0	; case 0
+   539     00FD  1903               	skipnz
+   540     00FE  281E               	goto	l766
+   541     00FF  3A01               	xorlw	1	; case 1
+   542     0100  1903               	skipnz
+   543     0101  2831               	goto	l770
+   544     0102  3A03               	xorlw	3	; case 2
+   545     0103  1903               	skipnz
+   546     0104  2844               	goto	l774
+   547     0105  3A01               	xorlw	1	; case 3
+   548     0106  1903               	skipnz
+   549     0107  2856               	goto	l778
+   550     0108  3A07               	xorlw	7	; case 4
+   551     0109  1903               	skipnz
+   552     010A  286A               	goto	l782
+   553     010B  3A01               	xorlw	1	; case 5
+   554     010C  1903               	skipnz
+   555     010D  287F               	goto	l786
+   556     010E  3A03               	xorlw	3	; case 6
+   557     010F  1903               	skipnz
+   558     0110  2891               	goto	l790
+   559     0111  3A01               	xorlw	1	; case 7
+   560     0112  1903               	skipnz
+   561     0113  28A5               	goto	l794
+   562     0114  3A0F               	xorlw	15	; case 8
+   563     0115  1903               	skipnz
+   564     0116  28B9               	goto	l798
+   565     0117  3A01               	xorlw	1	; case 9
+   566     0118  1903               	skipnz
+   567     0119  28CD               	goto	l802
+   568     011A  3A03               	xorlw	3	; case 10
+   569     011B  1903               	skipnz
+   570     011C  28E2               	goto	l806
+   571     011D  281B               	goto	l764
+   572     011E  280D               	ljmp	start
+   573     011F                     __end_of_main:
+   574                           
+   575                           	psect	text1
+   576     011F                     __ptext1:	
+   577 ;; *************** function _KESME *****************
+   578 ;; Defined at:
+   579 ;;		line 12 in file "Servo_Motor_Project-1.c"
+   580 ;; Parameters:    Size  Location     Type
+   581 ;;		None
+   582 ;; Auto vars:     Size  Location     Type
+   583 ;;		None
+   584 ;; Return value:  Size  Location     Type
+   585 ;;                  1    wreg      void 
+   586 ;; Registers used:
+   587 ;;		wreg, btemp+1
+   588 ;; Tracked objects:
+   589 ;;		On entry : 0/0
+   590 ;;		On exit  : 0/0
+   591 ;;		Unchanged: 0/0
+   592 ;; Data sizes:     COMMON   BANK0
+   593 ;;      Params:         0       0
+   594 ;;      Locals:         0       0
+   595 ;;      Temps:          0       3
+   596 ;;      Totals:         0       3
+   597 ;;Total ram usage:        3 bytes
+   598 ;; Hardware stack levels used: 1
+   599 ;; This function calls:
+   600 ;;		Nothing
+   601 ;; This function is called by:
+   602 ;;		Interrupt level 1
+   603 ;; This function uses a non-reentrant model
+   604 ;;
+   605                           
+   606     011F                     _KESME:	
+   607                           ;psect for function _KESME
+   608                           
+   609     011F                     i1l744:
+   610                           
+   611                           ;Servo_Motor_Project-1.c: 13: void main(void) {
+   612     011F  1E06               	btfss	6,4	;volatile
+   613     0120  2922               	goto	u5_21
+   614     0121  2923               	goto	u5_20
+   615     0122                     u5_21:
+   616     0122  2937               	goto	i1l750
+   617     0123                     u5_20:
+   618     0123                     i1l746:
+   619     0123  0812               	movf	_i+1,w
+   620     0124  3A80               	xorlw	128
+   621     0125  00CF               	movwf	btemp+1
+   622     0126  3080               	movlw	128
+   623     0127  024F               	subwf	btemp+1,w
+   624     0128  1D03               	skipz
+   625     0129  292C               	goto	u6_25
+   626     012A  300A               	movlw	10
+   627     012B  0211               	subwf	_i,w
+   628     012C                     u6_25:
+   629     012C  1803               	skipnc
+   630     012D  292F               	goto	u6_21
+   631     012E  2930               	goto	u6_20
+   632     012F                     u6_21:
+   633     012F  2937               	goto	i1l750
+   634     0130                     u6_20:
+   635     0130                     i1l748:
+   636                           
+   637                           ;Servo_Motor_Project-1.c: 14: 
+   638     0130  3001               	movlw	1
+   639     0131  1283               	bcf	3,5	;RP0=0, select bank0
+   640     0132  0791               	addwf	_i,f
+   641     0133  1803               	skipnc
+   642     0134  0A92               	incf	_i+1,f
+   643     0135  3000               	movlw	0
+   644     0136  0792               	addwf	_i+1,f
+   645     0137                     i1l750:
+   646                           
+   647                           ;Servo_Motor_Project-1.c: 16:     RBIE=1;
+   648     0137  1283               	bcf	3,5	;RP0=0, select bank0
+   649     0138  1E86               	btfss	6,5	;volatile
+   650     0139  293B               	goto	u7_21
+   651     013A  293C               	goto	u7_20
+   652     013B                     u7_21:
+   653     013B  2950               	goto	i1l756
+   654     013C                     u7_20:
+   655     013C                     i1l752:
+   656     013C  0812               	movf	_i+1,w
+   657     013D  3A80               	xorlw	128
+   658     013E  00CF               	movwf	btemp+1
+   659     013F  3080               	movlw	128
+   660     0140  024F               	subwf	btemp+1,w
+   661     0141  1D03               	skipz
+   662     0142  2945               	goto	u8_25
+   663     0143  3001               	movlw	1
+   664     0144  0211               	subwf	_i,w
+   665     0145                     u8_25:
+   666     0145  1C03               	skipc
+   667     0146  2948               	goto	u8_21
+   668     0147  2949               	goto	u8_20
+   669     0148                     u8_21:
+   670     0148  2950               	goto	i1l756
+   671     0149                     u8_20:
+   672     0149                     i1l754:
+   673                           
+   674                           ;Servo_Motor_Project-1.c: 17:     TRISB=48;
+   675     0149  30FF               	movlw	255
+   676     014A  1283               	bcf	3,5	;RP0=0, select bank0
+   677     014B  0791               	addwf	_i,f
+   678     014C  1803               	skipnc
+   679     014D  0A92               	incf	_i+1,f
+   680     014E  30FF               	movlw	255
+   681     014F  0792               	addwf	_i+1,f
+   682     0150                     i1l756:
+   683                           
+   684                           ;Servo_Motor_Project-1.c: 19:     while(1){
+   685     0150  100B               	bcf	11,0	;volatile
+   686     0151                     i1l25:
+   687     0151  1283               	bcf	3,5	;RP0=0, select bank0
+   688     0152  080E               	movf	??_KESME+2,w
+   689     0153  080D               	movf	??_KESME+1,w
+   690     0154  008A               	movwf	10
+   691     0155  0E0C               	swapf	??_KESME,w
+   692     0156  0083               	movwf	3
+   693     0157  0ECE               	swapf	btemp,f
+   694     0158  0E4E               	swapf	btemp,w
+   695     0159  0009               	retfie
+   696     015A                     __end_of_KESME:
+   697     004E                     btemp	set	78	;btemp
+   698     004E                     wtemp0	set	78
+   699                           
+   700                           	psect	intentry
+   701     0004                     __pintentry:	
+   702                           ;incstack = 0
+   703                           ; Regs used in _KESME: [wreg+btemp+1]
+   704                           
+   705     0004                     interrupt_function:
+   706     004E                     saved_w	set	btemp
+   707     0004  00CE               	movwf	btemp
+   708     0005  0E03               	swapf	3,w
+   709     0006  1283               	bcf	3,5	;RP0=0, select bank0
+   710     0007  008C               	movwf	??_KESME
+   711     0008  080A               	movf	10,w
+   712     0009  008D               	movwf	??_KESME+1
+   713     000A  084F               	movf	btemp+1,w
+   714     000B  008E               	movwf	??_KESME+2
+   715     000C  291F               	ljmp	_KESME
+   716                           
+   717                           	psect	idloc
+   718                           
+   719                           ;Config register IDLOC0 @ 0x2000
+   720                           ;	unspecified, using default values
+   721     2000                     	org	8192
+   722     2000  3FFF               	dw	16383
+   723                           
+   724                           ;Config register IDLOC1 @ 0x2001
+   725                           ;	unspecified, using default values
+   726     2001                     	org	8193
+   727     2001  3FFF               	dw	16383
+   728                           
+   729                           ;Config register IDLOC2 @ 0x2002
+   730                           ;	unspecified, using default values
+   731     2002                     	org	8194
+   732     2002  3FFF               	dw	16383
+   733                           
+   734                           ;Config register IDLOC3 @ 0x2003
+   735                           ;	unspecified, using default values
+   736     2003                     	org	8195
+   737     2003  3FFF               	dw	16383
+   738                           
+   739                           	psect	config
+   740                           
+   741                           ;Config register CONFIG @ 0x2007
+   742                           ;	Oscillator Selection bits
+   743                           ;	FOSC = XT, XT oscillator
+   744                           ;	Watchdog Timer
+   745                           ;	WDTE = OFF, WDT disabled
+   746                           ;	Power-up Timer Enable bit
+   747                           ;	PWRTE = OFF, Power-up Timer is disabled
+   748                           ;	Code Protection bit
+   749                           ;	CP = OFF, Code protection disabled
+   750     2007                     	org	8199
+   751     2007  3FF9               	dw	16377
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            66      5       7
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _KESME in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _KESME in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0       0
+                                              3 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (1) _KESME                                                3     3      0       0
+                                              0 BANK0      3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ _KESME (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              40      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BANK0               42      5       7       3       10.6%
+ABS                  0      0       7       4        0.0%
+BITBANK0            42      0       0       5        0.0%
+DATA                 0      0       7       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Mon Apr 10 00:25:55 2023
+
+                      _i 0011                       u97 0020                      l800 00C1  
+                    l802 00CD                      l804 00D6                      l812 00F6  
+                    l806 00E2                      l808 00EB                      l760 0015  
+                    l850 00FB                      l770 0031                      l762 0018  
+                    l780 005E                      l772 0038                      l764 001B  
+                    l790 0091                      l782 006A                      l774 0044  
+                    l766 001E                      l758 0013                      l792 0099  
+                    l784 0073                      l776 004B                      l768 0025  
+                    l794 00A5                      l786 007F                      l778 0056  
+                    l796 00AE                      l788 0086                      l798 00B9  
+                    _GIE 005F                      _RB0 0030                      _RB4 0034  
+                    _RB5 0035                      u107 002B                      u117 0033  
+                    u207 008C                      u127 003E                      u217 0093  
+                    u137 0046                      u307 00F1                      u227 009F  
+                    u147 0051                      u237 00A7                      u157 0058  
+                    u247 00B4                      u167 0064                      u257 00BD  
+                    u177 006C                      u267 00C7                      u187 0079  
+                    u277 00D1                      u197 0081                      u287 00DC  
+                    u297 00E6                     _RBIE 005B                     _RBIF 0058  
+                   i1l25 0151                     u5_20 0123                     u5_21 0122  
+                   u6_20 0130                     u6_21 012F                     u6_25 012C  
+                   u7_20 013C                     u7_21 013B                     u8_20 0149  
+                   u8_21 0148                     u8_25 0145                     _main 0013  
+                   btemp 004E                     start 000D                    ?_main 000C  
+                  _KESME 011F                    i1l750 0137                    i1l752 013C  
+                  i1l744 011F                    i1l754 0149                    i1l746 0123  
+                  i1l756 0150                    i1l748 0130                    _TRISB 0086  
+                  pclath 000A                    status 0003                    wtemp0 004E  
+        __initialization 000E             __end_of_main 011F                   ??_main 000F  
+                 ?_KESME 000C                   saved_w 004E  __end_of__initialization 0011  
+          __end_of_KESME 015A                  ??_KESME 000C               __pbssBANK0 0011  
+             __pmaintext 0013               __pintentry 0004                  __ptext1 011F  
+   end_of_initialization 0011      start_initialization 000E                ___latbits 0000  
+          __pcstackBANK0 000C        interrupt_function 0004                 intlevel1 0000  
