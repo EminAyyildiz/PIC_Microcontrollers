@@ -1,9 +1,3 @@
-/*
- * File:   timer0_uygulamasi.c
- * Author: User
- *
- * Created on 30 October 2019, 12:50 PM
- */
 
 
 #include <xc.h>
